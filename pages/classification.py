@@ -152,11 +152,11 @@ if st.button("Submit", type="primary"):
 
     if pred > HEART_DISEASE_WARNING_THRESHOLD:
         st.warning(
-            "Your probability of having heart disease symptoms is high. ({pred}%)")
+            f"Your probability of having heart disease symptoms is high. ({pred}%)")
 
     else:
         st.success(
-            "Your probability of not having heart disease symptoms is high. ({pred}%)")
+            f"Your probability of not having heart disease symptoms is high. ({pred}%)")
 
     with st.spinner("Generating suggestion..."):
         placeholder = st.empty()
