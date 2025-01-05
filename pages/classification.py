@@ -150,6 +150,9 @@ if st.button("Submit", type="primary"):
     model = load_model()
     pred = np.squeeze(model.predict(np.expand_dims(all_values, axis=0)))
 
+    pred_percentage = pred * 100
+    pred = round(pred_percentage, 2)
+
     if pred > HEART_DISEASE_WARNING_THRESHOLD:
         st.warning(
             f"Your probability of having heart disease symptoms is high. ({pred}%)")
@@ -161,9 +164,6 @@ if st.button("Submit", type="primary"):
     with st.spinner("Generating suggestion..."):
         placeholder = st.empty()
         typed_text = ""
-
-        pred_percentage = pred * 100
-        pred = round(pred_percentage, 2)
 
         question = f"Imagine there is a patient with a probability of getting heart diseases {pred}%. What is your recommendation to that patient?"
         answer = generate_response(question)
