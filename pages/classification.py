@@ -1,22 +1,19 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import os
 import pickle
 import tensorflow as tf
 import google.generativeai as genai
 import time
+import os
 
-from dotenv import load_dotenv
-
-load_dotenv()
 
 HEART_DISEASE_WARNING_THRESHOLD = 0.50
 
 
 def generate_response(question: str):
-    api_key = os.getenv("GENAI_APIKEY")
-    model_selected = os.getenv("GENAI_MODEL")
+    api_key = st.secrets["GENAI_APIKEY"]
+    model_selected = st.secrets["GENAI_MODEL"]
 
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel(model_selected)

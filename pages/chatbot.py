@@ -1,10 +1,6 @@
 import streamlit as st
 import google.generativeai as genai
 import time
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 st.set_page_config(page_title="🤗💬 Help Care bot")
 
@@ -22,8 +18,8 @@ for message in st.session_state.messages:
 
 
 def generate_response(question: str):
-    api_key = os.getenv("GENAI_APIKEY")
-    model_selected = os.getenv("GENAI_MODEL")
+    api_key = st.secrets["GENAI_APIKEY"]
+    model_selected = st.secrets["GENAI_MODEL"]
 
     genai.configure(api_key=api_key)
     model = genai.GenerativeModel(model_selected)
