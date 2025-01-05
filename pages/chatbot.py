@@ -25,7 +25,7 @@ def generate_response(question: str):
     model = genai.GenerativeModel(model_selected)
 
     join_question = question.join(
-        " please provide your anwear with bahasa and make it easy to understand"
+        " please provide your answear with bahasa and make it easy to understand"
     )
 
     response = model.generate_content(join_question)
